@@ -1,11 +1,13 @@
-import { Button } from "@/components/ui/button"
+import { Suspense } from "react";
+import Routes from "@/routes";
 
 function App() {
   return (
-    <main>
-      <div className="font-bold text-3xl text-cyan-500">Hai Test</div>
-      <Button>Click me</Button>
-    </main>
+    <>
+      <Suspense>
+        <Routes />
+      </Suspense>
+    </>
   );
 }
 
