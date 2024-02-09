@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Auth from "@/components/templates/Auth";
 import { SubmitHandler } from "react-hook-form";
-import LoginForm, { LoginFormValues } from "@/components/organims/LoginForm";
+import AuthForm, { AuthFormValues } from "@/components/organims/AuthForm";
 
 function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   
-  const handleLogin: SubmitHandler<LoginFormValues> = (data) => {
+  const handleLogin: SubmitHandler<AuthFormValues> = (data) => {
     setIsLoading(true)
     console.log(data);
     setTimeout(() => {
@@ -18,7 +18,7 @@ function Login() {
     <Auth
       title="Login to Dashboard"
       description="Please enter your email and password"
-      form={<LoginForm isLoading={isLoading} handleLogin={handleLogin}  />}
+      form={<AuthForm isLoading={isLoading} handleAuth={handleLogin}  />}
     />
   );
 }

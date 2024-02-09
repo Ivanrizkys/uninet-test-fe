@@ -4,26 +4,26 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputLabel from "@/components/molecules/InputLabel";
 import { Link } from "react-router-dom";
 
-export type LoginFormValues = {
+export type AuthFormValues = {
   email: string;
   password: string;
 };
 
-interface LoginFormProps {
+interface AuthFormProps {
   isLoading: boolean;
-  handleLogin: SubmitHandler<LoginFormValues>;
+  handleAuth: SubmitHandler<AuthFormValues>;
 }
 
-function LoginForm({ isLoading, handleLogin }: LoginFormProps) {
+function AuthForm({ isLoading, handleAuth }: AuthFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormValues>();
+  } = useForm<AuthFormValues>();
 
   return (
     <>
-      <form className="text-left" onSubmit={handleSubmit(handleLogin)}>
+      <form className="text-left" onSubmit={handleSubmit(handleAuth)}>
         <InputLabel
           label="Email"
           className="mb-4"
@@ -66,4 +66,4 @@ function LoginForm({ isLoading, handleLogin }: LoginFormProps) {
   );
 }
 
-export default LoginForm;
+export default AuthForm;
