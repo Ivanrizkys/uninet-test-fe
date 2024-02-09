@@ -16,6 +16,7 @@ function Login() {
 
   return (
     <Auth
+      variant="login"
       title="Login to Dashboard"
       description="Please enter your email and password"
       form={<AuthForm isLoading={isLoading} handleAuth={handleLogin}  />}
