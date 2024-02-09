@@ -9,6 +9,7 @@ const Register = lazy(() => import("@/components/pages/Register"));
 const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
 const CreateUser = lazy(() => import("@/components/pages/CreateUser"));
 const EditUser = lazy(() => import("@/components/pages/EditUser"));
+const DetailUser = lazy(() => import("@/components/pages/DetailUser"))
 
 const Routes = () => {
   return useRoutes([
@@ -26,6 +27,10 @@ const Routes = () => {
         {
           path: "/user/edit",
           element: <EditUser />,
+        },
+        {
+          path: "/user/:id",
+          element: <DetailUser />,
         },
       ],
     },
