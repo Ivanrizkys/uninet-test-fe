@@ -7,6 +7,7 @@ const Login = lazy(() => import("@/components/pages/Login"));
 const Register = lazy(() => import("@/components/pages/Register"));
 
 const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
+const CreateUser = lazy(() => import("@/components/pages/CreateUser"))
 
 const Routes = () => {
   return useRoutes([
@@ -16,6 +17,10 @@ const Routes = () => {
         {
           path: "/",
           element: <Dashboard />,
+        },
+        {
+          path: "/user/create",
+          element: <CreateUser />,
         },
       ],
     },
