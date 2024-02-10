@@ -6,10 +6,11 @@ const Protected = lazy(() => import("@/components/templates/Protected"));
 const Login = lazy(() => import("@/components/pages/Login"));
 const Register = lazy(() => import("@/components/pages/Register"));
 
+const Filter = lazy(() => import("@/components/pages/Filter"));
 const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
 const CreateUser = lazy(() => import("@/components/pages/CreateUser"));
 const EditUser = lazy(() => import("@/components/pages/EditUser"));
-const DetailUser = lazy(() => import("@/components/pages/DetailUser"))
+const DetailUser = lazy(() => import("@/components/pages/DetailUser"));
 
 const Routes = () => {
   return useRoutes([
@@ -31,6 +32,10 @@ const Routes = () => {
         {
           path: "/user/:id",
           element: <DetailUser />,
+        },
+        {
+          path: "/filter",
+          element: <Filter />,
         },
       ],
     },
