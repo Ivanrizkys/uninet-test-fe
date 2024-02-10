@@ -1,5 +1,6 @@
-import { Suspense } from "react";
 import Routes from "@/routes";
+import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Suspense>
         <Routes />
       </Suspense>
+      <Toaster position="top-center" />
     </>
   );
 }
