@@ -45,7 +45,7 @@ function UserForm({ isLoading, defaultValue, handleUser }: UserFormProps) {
       <InputLabel
         label="Username"
         className="mb-4"
-        placeholder="Enter name"
+        placeholder="Enter username"
         {...register("username", {
           required: "Username is required",
         })}
