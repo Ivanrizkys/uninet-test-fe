@@ -8,12 +8,12 @@ interface ProfileDataProps {
 function ProfileData({ id, name, username, email }: ProfileDataProps) {
   return (
     <>
-      <div className="w-52 h-52 rounded-full bg-slate-700 overflow-hidden">
-        {/* <img
-          src={avatar}
+      <div className="w-52 h-52 rounded-full overflow-hidden">
+        <img
+          src="https://source.unsplash.com/random/208×208/?profile"
           alt="profile picture"
           className="w-full h-full object-cover"
-        /> */}
+        />
       </div>
       <h2 className="font-bold text-2xl text-center text-foreground">{name}</h2>
       <div className="text-base text-primary text-center">
