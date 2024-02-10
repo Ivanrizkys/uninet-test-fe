@@ -9,11 +9,12 @@ export type AuthFormValues = {
 };
 
 interface AuthFormProps {
+  variant: "login" | "register"
   isLoading: boolean;
   handleAuth: SubmitHandler<AuthFormValues>;
 }
 
-function AuthForm({ isLoading, handleAuth }: AuthFormProps) {
+function AuthForm({ variant, isLoading, handleAuth }: AuthFormProps) {
   const {
     register,
     handleSubmit,
@@ -48,7 +49,8 @@ function AuthForm({ isLoading, handleAuth }: AuthFormProps) {
       />
       <Button disabled={isLoading} type="submit" className="w-full">
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        Login
+        {variant === "login" && "Login"}
+        {variant === "register" && "Register"}
       </Button>
     </form>
   );
