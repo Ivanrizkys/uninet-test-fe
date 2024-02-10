@@ -10,7 +10,7 @@ export interface Data {
 }
 
 export interface Response {
-  additionaldata: any[];
+  additionaldata: unknown[];
   billdetails: Billdetail[];
   bilename: string;
   inqueryid: string;
