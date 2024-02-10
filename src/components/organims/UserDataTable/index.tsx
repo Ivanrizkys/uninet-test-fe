@@ -55,7 +55,7 @@ function UserDataTable(props: UserDataTableProps) {
         header: "Name",
         cell: ({ row }) => (
           <div className="flex items-center gap-2">
-            <div className="basis-6 h-6 grow-0 shrink-0 bg-slate-700 rounded-full overflow-hidden relative">
+            <div className="basis-6 h-6 grow-0 shrink-0  rounded-full overflow-hidden relative">
               <img
                 src="https://source.unsplash.com/random/208×208/?profile"
                 alt="image"
