@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { Input, InputProps } from "@/components/ui/input";
 import { FieldError } from "react-hook-form";
+import { Input, InputProps } from "@/components/ui/input";
 
 interface InputLabelProps extends InputProps {
   label: string;
@@ -18,13 +18,14 @@ const InputLabel = forwardRef<HTMLInputElement, InputLabelProps>(
           {label}
         </label>
         <Input className="w-full mt-2" name={name} ref={ref} {...resProps} />
-        <p
-          className={`mt-1 text-xs transition-opacity duration-500 text-destructive ${
-            error ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {errorMessage ?? ""}
-        </p>
+        {error && (
+          <p
+            className="mt-1 text-xs text-destructive"
+            role="alert"
+          >
+            {errorMessage ?? ""}
+          </p>
+        )}
       </div>
     );
   }
