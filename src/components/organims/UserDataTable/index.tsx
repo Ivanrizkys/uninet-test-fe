@@ -56,11 +56,11 @@ function UserDataTable(props: UserDataTableProps) {
         cell: ({ row }) => (
           <div className="flex items-center gap-2">
             <div className="basis-6 h-6 grow-0 shrink-0 bg-slate-700 rounded-full overflow-hidden relative">
-              {/* <img
-              src={row.original.tourist_profilepicture}
-              alt="image"
-              className="w-full h-full"
-            /> */}
+              <img
+                src="https://source.unsplash.com/random/208×208/?profile"
+                alt="image"
+                className="w-full h-full object-cover"
+              />
             </div>
             <p>{row.original.name}</p>
           </div>
@@ -83,7 +83,13 @@ function UserDataTable(props: UserDataTableProps) {
       {
         accessorKey: "createdAt",
         header: "Createdat",
-        cell: () => <div>{dayjs().format("HH:mm D MMMM YYYY")}</div>,
+        cell: ({ row }) => (
+          <div>
+            {dayjs(row.original.createdAt.toDate()).format(
+              "HH:mm - D MMMM YYYY"
+            )}
+          </div>
+        ),
       },
       {
         id: "actions",
@@ -96,14 +102,12 @@ function UserDataTable(props: UserDataTableProps) {
               <Link to={`/user/${user.id}`}>
                 <Eye className="w-5 h-5 text-muted-foreground" />
               </Link>
-              <Link
-                to={`/user/edit?id=${user.id}&name=${user.name}&email=${user.email}&username=${user.username}`}
-              >
+              <Link to={`/user/edit/${user.id}`}>
                 <Pencil className="w-5 h-5 text-muted-foreground" />
               </Link>
               <DialogConfirmation
-                title="Delete Tourist"
-                description="Are you sure to delete this user? Be careful, thisvaction cannot be reversed"
+                title="Delete User"
+                description="Are you sure to delete this user? Be careful, this action cannot be reversed"
                 handleConfirmation={handleDeleteUser}
                 triger={
                   <button onClick={() => setDeleteId(user.id)}>
