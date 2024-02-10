@@ -25,7 +25,7 @@ const Routes = () => {
           element: <CreateUser />,
         },
         {
-          path: "/user/edit",
+          path: "/user/edit/:id",
           element: <EditUser />,
         },
         {
