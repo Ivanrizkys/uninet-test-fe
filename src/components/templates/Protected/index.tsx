@@ -1,17 +1,17 @@
-// import { ReactNode } from "react";
-import { Outlet } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 import Navbar from "@/components/organims/Navbar";
-
-// interface ProtectedProps {
-//   children: ReactNode;
-// }
+import { Navigate, Outlet } from "react-router-dom";
 
 function Protected() {
-  return (
+  const auth = useAuth();
+
+  return auth ? (
     <>
       <Navbar />
       <Outlet />
     </>
+  ) : (
+    <Navigate to="/auth/login" />
   );
 }
 
