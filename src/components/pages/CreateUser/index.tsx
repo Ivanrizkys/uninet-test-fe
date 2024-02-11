@@ -13,8 +13,9 @@ import UserManagementTemplate from "@/components/templates/UserManagement";
 function CreateUser() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  // * function handler for create user
   const handleCreateUser: SubmitHandler<UserFormValues> = async (data) => {
     setIsLoading(true);
     try {
@@ -25,12 +26,16 @@ function CreateUser() {
         username: data.username,
         createdAt: Timestamp.now(),
       });
-      setIsLoading(false)
-      toast.custom(() => <Toast variant="success" message="Success create new user!" />);
-      navigate("/")
+      setIsLoading(false);
+      toast.custom(() => (
+        <Toast variant="success" message="Success create new user!" />
+      ));
+      navigate("/");
     } catch (err) {
-      setIsLoading(false)
-      toast.custom(() => <Toast variant="error" message="Error when create new user!" />);
+      setIsLoading(false);
+      toast.custom(() => (
+        <Toast variant="error" message="Error when create new user, please try again!" />
+      ));
     }
   };
 
