@@ -1,3 +1,11 @@
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import toast from "react-hot-toast";
 import { User } from "@/types/users";
 import { db } from "@/config/firebase";
@@ -8,7 +16,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import HeaderApp from "@/components/molecules/HeaderApp";
 import UserForm, { UserFormValues } from "@/components/organims/UserForm";
 import UserManagementTemplate from "@/components/templates/UserManagement";
-import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore";
 
 const dataCollectionRef = collection(db, "users");
 
@@ -25,6 +32,7 @@ function EditUser() {
   const params = useParams();
   const navigate = useNavigate();
 
+  // * get user by id -> initial value form
   useEffect(() => {
     (async function () {
       if (params.id) {
@@ -53,8 +61,9 @@ function EditUser() {
     })();
   }, [params.id]);
 
+  // * function handler for edit user
   const handleEditUser: SubmitHandler<UserFormValues> = async (data) => {
-    setLoadingEdit(true)
+    setLoadingEdit(true);
     try {
       const q = query(dataCollectionRef, where("id", "==", user.id));
       const querySnapshot = await getDocs(q);
@@ -65,20 +74,20 @@ function EditUser() {
           username: data.username,
         });
       });
-      setLoadingEdit(false)
+      setLoadingEdit(false);
       toast.custom(() => (
         <Toast variant="success" message="Successfully edit user!" />
       ));
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      setLoadingEdit(false)
+      setLoadingEdit(false);
       toast.custom(() => (
-        <Toast variant="error" message="Error when edit user!" />
+        <Toast variant="error" message="Error when edit user, plase try again!" />
       ));
     }
   };
 
-  if (loadingGet) return null
+  if (loadingGet) return null;
 
   return (
     <UserManagementTemplate
