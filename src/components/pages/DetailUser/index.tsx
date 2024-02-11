@@ -19,6 +19,7 @@ function DetailUser() {
 
   const params = useParams();
 
+  // * get user by id
   useEffect(() => {
     (async function () {
       if (params.id) {
