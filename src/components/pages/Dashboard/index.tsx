@@ -24,6 +24,7 @@ function Dashboard() {
   const [deleteId, setDeleteId] = useState<string>("");
   const [dialogDelete, setDialogDelete] = useState<boolean>(false);
 
+  // * get data user
   useEffect(() => {
     const unSubscribe = onSnapshot(dataCollectionRef, (snapshot) => {
       const data: User[] = snapshot.docs.map((doc) => ({
@@ -39,6 +40,7 @@ function Dashboard() {
     return () => unSubscribe();
   }, []);
 
+  // * function handler for delete user
   const handleDeleteUser = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
@@ -55,7 +57,7 @@ function Dashboard() {
       } catch (err) {
         setDialogDelete(false);
         toast.custom(() => (
-          <Toast variant="error" message="Error when delete user!" />
+          <Toast variant="error" message="Error when delete user, please try again!" />
         ));
       }
     },
