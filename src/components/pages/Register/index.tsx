@@ -17,6 +17,7 @@ function Register() {
   const auth = useAuth();
   const navigate = useNavigate();
 
+  // * handler function to register
   const handleRegister: SubmitHandler<AuthFormValues> = async (data) => {
     setIsLoading(true);
     try {
@@ -44,6 +45,7 @@ function Register() {
     }
   };
 
+  // * prevent user access register if they are already authenticated (have a token)
   if (auth) return <Navigate to="/" />;
 
   return (
@@ -51,7 +53,13 @@ function Register() {
       variant="register"
       title="Create an Account"
       description="Please enter your email and password"
-      form={<AuthForm variant="register" isLoading={isLoading} handleAuth={handleRegister} />}
+      form={
+        <AuthForm
+          variant="register"
+          isLoading={isLoading}
+          handleAuth={handleRegister}
+        />
+      }
     />
   );
 }

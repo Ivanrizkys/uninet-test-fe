@@ -17,6 +17,7 @@ function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
 
+  // * function handler to login
   const handleLogin: SubmitHandler<AuthFormValues> = async (data) => {
     setIsLoading(true);
     try {
@@ -44,6 +45,7 @@ function Login() {
     }
   };
 
+  // * prevent user access login if they are already authenticated (have a token)
   if (auth) return <Navigate to="/" />;
 
   return (
@@ -51,7 +53,13 @@ function Login() {
       variant="login"
       title="Login to Dashboard"
       description="Please enter your email and password"
-      form={<AuthForm variant="login" isLoading={isLoading} handleAuth={handleLogin} />}
+      form={
+        <AuthForm
+          variant="login"
+          isLoading={isLoading}
+          handleAuth={handleLogin}
+        />
+      }
     />
   );
 }
